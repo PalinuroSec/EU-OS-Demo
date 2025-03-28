@@ -1,12 +1,12 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
-name: EU-OS-Demo
+name: EU-OS
 # description will be included in the image's metadata
-description: This is my personal OS image.
+description: EU OS is a Proof-of-Concept for the deloyment of a Fedora
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/kionite-main
 image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -23,21 +23,31 @@ modules:
     install:
       - micro
       - starship
+      - btop
+      - yakuake
+      - podman-compose
     remove:
-      # example: removing firefox (in favor of the flatpak)
-      # "firefox" is the main package, "firefox-langpacks" is a dependency
       - firefox
-      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - firefox-langpacks
+      - akonadi*
+      - yelp
+      - abrt*
+      - kmail
+      - kaddressbook
+      - akgregator
+
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
       # If no repo information is specified, Flathub will be used by default
       install:
-        - org.mozilla.firefox
-        - org.gnome.Loupe
+        - io.gitlab.librewolf-community
+        - org.kde.okular
+        - org.kde.kate
+        - eu.betterbird.Betterbird
       remove:
-        - org.gnome.eog
+        - org.kde.kmahjongg
     user: {} # Also add Flathub user repo, but no user packages
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
