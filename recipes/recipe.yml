@@ -31,7 +31,7 @@ modules:
       - firefox-langpacks
       - akonadi*
       - yelp
-      - abrt*
+      - abrt
       - kmail
       - kaddressbook
       - akgregator
