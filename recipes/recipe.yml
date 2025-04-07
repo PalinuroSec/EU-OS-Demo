@@ -6,7 +6,7 @@ name: EU-OS
 description: EU OS is a Proof-of-Concept for the deloyment of a Fedora
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/kionite-main
+base-image: ghcr.io/ublue-os/kinoite-main
 image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
